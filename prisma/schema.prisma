@@ -1,0 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://adeshEupheus:8bZiNsFtgPr3@ep-tight-recipe-358789.us-east-2.aws.neon.tech:5432/neondb"
+}
+
+model Train {
+  id String @id @default(uuid())
+  name String 
+  seats Seats[]
+}
+
+model Seats {
+  id String @id @default(uuid())
+  seatNo Int
+  train      Train     @relation(fields: [trainId], references: [id], onDelete: Cascade)
+  trainId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
