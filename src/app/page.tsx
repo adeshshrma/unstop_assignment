@@ -12,6 +12,7 @@ export default function Home() {
   const [showStatus, setShowStatus] = useState<boolean>(false);
   const [err, setErr] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
+  //
   const getStatus = async () => {
     const data = await getAvailableSeats();
     console.log(data);
